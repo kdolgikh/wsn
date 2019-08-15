@@ -15,10 +15,7 @@
 #include "SPI_Library.h" // SPI control for the radio
 #include "sleep_timer.h" // Sleep code for controller
 #include "states.h" // Enum for the possible machine states.
-#include "Clustering.h" //Clustering
-#include "Wait_For_Start.h"
 #include "SPI_Pins.h"
-#include "RandomGen.h"
 #include "States.h"
 #include "Message_Prep.h"
 #include "CH_TDMA_Assign.h"
@@ -63,10 +60,8 @@ int main(void) {
 
 	P1DIR |= LED1;	// Set LED to output
 
-	while (True) {
-
-		if (__State == Waiting_For_Start)
-			__State = Wait_For_Start();
+	while (True)
+	{
 
 		if (__State == CH_TDMA_Assignment) {
 			__State = CH_TDMA_Assign(_MyAddress, _ChildList, _ChildCount);
@@ -74,10 +69,6 @@ int main(void) {
 
 		if (__State == CH_Sensing) {
 			__State = CH_Sense(_MyAddress, _ChildList, _ChildCount);
-		}
-
-		if (__State == Clustering) {
-			__State = Cluster_Choose();
 		}
 
 		if (__State == TDMA_Assignment) {
@@ -90,14 +81,6 @@ int main(void) {
 
 		if (__State == CH_Sensing) {
 			__State = CH_Sense(_MyAddress, _ChildList, _ChildCount);
-		}
-
-		if (__State == CH_Associate) {
-			__State = CH_Cluster_Associate();
-		}
-
-		if (__State == Associate) {
-			__State = Child_Associate();
 		}
 		if (__State == broken) {// Should never hit this step, infinite loop for debugging purposes
 			while (1)

@@ -12,16 +12,13 @@ GEN_CMDS__FLAG :=
 ORDERED_OBJS += \
 "./CH_Sense.obj" \
 "./CH_TDMA_Assign.obj" \
-"./Clustering.obj" \
 "./MSP_Init.obj" \
 "./Message_Prep.obj" \
 "./ND_Sense.obj" \
 "./Radio.obj" \
-"./RandomGen.obj" \
 "./SPI_Library.obj" \
 "./TDMA_Assign.obj" \
 "./UART.obj" \
-"./Wait_For_Start.obj" \
 "./main.obj" \
 "./sleep_timer.obj" \
 "../lnk_msp430g2553.cmd" \
@@ -167,8 +164,8 @@ WSN.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "CH_Sense.obj" "CH_TDMA_Assign.obj" "Clustering.obj" "MSP_Init.obj" "Message_Prep.obj" "ND_Sense.obj" "Radio.obj" "RandomGen.obj" "SPI_Library.obj" "TDMA_Assign.obj" "UART.obj" "Wait_For_Start.obj" "main.obj" "sleep_timer.obj" 
-	-$(RM) "CH_Sense.d" "CH_TDMA_Assign.d" "Clustering.d" "MSP_Init.d" "Message_Prep.d" "ND_Sense.d" "Radio.d" "RandomGen.d" "SPI_Library.d" "TDMA_Assign.d" "UART.d" "Wait_For_Start.d" "main.d" "sleep_timer.d" 
+	-$(RM) "CH_Sense.obj" "CH_TDMA_Assign.obj" "MSP_Init.obj" "Message_Prep.obj" "ND_Sense.obj" "Radio.obj" "SPI_Library.obj" "TDMA_Assign.obj" "UART.obj" "main.obj" "sleep_timer.obj" 
+	-$(RM) "CH_Sense.d" "CH_TDMA_Assign.d" "MSP_Init.d" "Message_Prep.d" "ND_Sense.d" "Radio.d" "SPI_Library.d" "TDMA_Assign.d" "UART.d" "main.d" "sleep_timer.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
