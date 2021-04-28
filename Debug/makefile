@@ -24,7 +24,6 @@ ORDERED_OBJS += \
 "./Wait_For_Start.obj" \
 "./main.obj" \
 "./sleep_timer.obj" \
-"../lnk_msp430g2553.cmd" \
 $(GEN_CMDS__FLAG) \
 -llibc.a \
 
@@ -146,11 +145,11 @@ BIN_OUTPUTS__QUOTED += \
 
 
 # All Target
-all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
+all: $(OBJS) $(GEN_CMDS)
 	@$(MAKE) --no-print-directory -Onone "WSN.out"
 
 # Tool invocations
-WSN.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
+WSN.out: $(OBJS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: MSP430 Linker'
 	"C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_18.12.2.LTS/bin/cl430" -vmsp --use_hw_mpy=none --advice:power=all --define=__MSP430G2553__ -g --printf_support=minimal --diag_warning=225 --diag_wrap=off --display_error_number -z -m"WSN.map" --heap_size=80 --stack_size=80 -i"C:/ti/ccs910/ccs/ccs_base/msp430/include" -i"C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_18.12.2.LTS/lib" -i"C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_18.12.2.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="WSN_linkInfo.xml" --use_hw_mpy=none --rom_model -o "WSN.out" $(ORDERED_OBJS)
